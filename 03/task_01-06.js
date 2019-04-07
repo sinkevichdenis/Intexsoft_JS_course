@@ -32,22 +32,24 @@ console.log(addMinutes(25, 240, 283));*/
 //task 3
 function getSeason(month) {
 	let result = '';
+
 	switch(true) {
-		case (month === 12) || (month === 1) || (month === 2):
-			result = 'Зима';
-			break;
-		case (month >= 3) && (month <= 5):
-			result = 'Весна';
-			break;
-		case (month >= 6) && (month <= 8):
-			result = 'Лето';
-			break;
-		case (month >= 9) && (month <= 11):
-			result = 'Осень';
-			break;
-		default:
-			result = 'Incorrect entered data';
+	case (month === 12) || (month === 1) || (month === 2):
+		result = 'Зима';
+		break;
+	case (month >= 3) && (month <= 5):
+		result = 'Весна';
+		break;
+	case (month >= 6) && (month <= 8):
+		result = 'Лето';
+		break;
+	case (month >= 9) && (month <= 11):
+		result = 'Осень';
+		break;
+	default:
+		result = 'Incorrect entered data';
 	}
+
 	return result;
 }
 
@@ -74,21 +76,22 @@ function getDayDeclension(day) {
 		result;
 
 	switch (true) {
-		case (dd >= 11) && (dd <= 14):
-			result = 'Дней';
-			break;
-		case (d >= 2) && (d <= 4):
-			result = 'Дня';
-			break;
-		case d === 1:
-			result = 'День';
-			break;
-		case day < 0 || !Number.isInteger(day):
-			result = 'Incorrect entered data ';
-			break;
-		default:
-			result = 'Дней';
+	case (dd >= 11) && (dd <= 14):
+		result = 'Дней';
+		break;
+	case (d >= 2) && (d <= 4):
+		result = 'Дня';
+		break;
+	case d === 1:
+		result = 'День';
+		break;
+	case day < 0 || !Number.isInteger(day):
+		result = 'Incorrect entered data ';
+		break;
+	default:
+		result = 'Дней';
 	}
+
 	return result;
 }
 
@@ -104,6 +107,7 @@ console.log('text', getDayDeclension('45'));*/
 //task 5
 function getSumm(num) {
 	let summ = 0;
+
 	while (num > 0) {
 		summ += num--;
 	}
