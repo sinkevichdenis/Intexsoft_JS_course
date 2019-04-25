@@ -1,13 +1,57 @@
 function query(collection) {
+    let resultArr = collection;
 
+    if (arguments.length === 1) {
+        return resultArr;
+    }
+
+    for (let i = 1; i < arguments.length; i++){
+        if (arguments[i].toString().includes('doFilter')) {
+            resultArr = arguments[i](resultArr);
+        }
+    }
+
+    for (let i = 1; i < arguments.length; i++){
+        if (arguments[i].toString().includes('doSelect')) {
+            resultArr = arguments[i](resultArr);
+        }
+    }
+
+    return resultArr;
 }
 
 function select() {
+    let argArr = Array.from(arguments);
 
+    return function doSelect(arrToSelect) {
+        return arrToSelect.map(item => {
+            let resultObj = {},
+                sortObj = {};
+
+            argArr.forEach(key => {
+                if (item.hasOwnProperty(key)) {
+                    resultObj[key] = item[key];
+                }
+            });
+
+            Object.keys(resultObj).sort( (a, b) => {
+                let templateArr = Object.keys(arrToSelect[0]),
+                    indexA = templateArr.indexOf(a),
+                    indexB = templateArr.indexOf(b);
+                return Math.sign(indexA - indexB);
+            }).forEach(key => {
+                sortObj[key] = resultObj[key];
+            });
+
+            return sortObj;
+        })
+    }
 }
 
 function filterIn(property, values) {
-
+    return function doFilter(arrToFilter) {
+        return arrToFilter.filter(item => values.includes(item[property]))
+    }
 }
 
 module.exports = {
