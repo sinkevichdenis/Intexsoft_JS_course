@@ -63,10 +63,10 @@ CreateContainer.prototype.createTemplates = function () {
 };
 
 CreateContainer.prototype.createTable = function (table, index, style) {
-    for (let i = 0; i<index; i++) {
+    for (let i = 0; i < index; i++) {
         let tr = document.createElement('tr');
 
-        for (let j = 0; j<index; j++) {
+        for (let j = 0; j < index; j++) {
             let td = document.createElement('td');
             let div = document.createElement('div');
             div.style.width = style.width;
